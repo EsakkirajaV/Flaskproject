@@ -1,0 +1,70 @@
+<!--Store this code in 'display.html' file inside the 'templates' folder-->
+
+<html lang="en">
+	<head>
+		<title>display</title>
+		<link rel="stylesheet" href="../static/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	</head>
+	<body bgcolor="#e6ffee">
+		<div class="one">
+			<div class="two">
+				<h1>Side Bar</h1>
+				<ul>
+					<li><a href="{{url_for('index')}}">Index</a></li>
+					<li class="active"><a href="{{url_for('display')}}">Display</a></li>
+					<li><a href="{{url_for('logout')}}">Log out</a></li>
+				</ul>
+			</div>
+			<div class="content" align="center">
+				<div class="topbar">
+					<h2>Welcome!! You are in Display Page!! </h2>						
+				</div> </br>
+				<div class="contentbar">
+					<h1>Account Details</h1> </br>
+					{% block content %}
+						<div class="border">
+                            <div class="msg">{{ msg }}</div>
+							<table class="worddark">
+								<thead>
+                                    <th>S.no</th>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Organisation</th>
+                                    <th>Address</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Country</th>
+                                    <th>postalcode</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
+                                    {% for account in accounts %}
+                                        <tr>
+                                            <td>{{account[0]}}</td>
+                                            <td>{{account[1]}}</td>
+                                            <td>{{account[2]}}</td>
+                                            <td>{{account[3]}}</td>
+                                            <td>{{account[4]}}</td>
+                                            <td>{{account[5]}}</td>
+                                            <td>{{account[6]}}</td>
+                                            <td>{{account[7]}}</td>
+                                            <td>{{account[8]}}</td>
+                                            <td><a href="edit/{{account[0]}}">Edit</a></td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>				
+							</table>
+						</div>
+					{% endblock %}										
+				</div>
+				
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+    $(document).ready(function(){
+        alert('test');
+    });
+</script>
